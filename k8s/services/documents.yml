@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: micro-nest-nsp
+  name: documents-svc
+spec:
+  selector:
+    app: documents
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: micro-nest-nsp
+  name: documents-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: documents
+  template:
+    metadata:
+      labels:
+        app: documents
+    spec:
+      containers:
+        - name: documents-container
+          image: micro-nest/documents
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - secretRef:
+                name: micro-nest-secret
+          resources: 
+            limits:
+              memory: 512Mi
+              cpu: "0.2"

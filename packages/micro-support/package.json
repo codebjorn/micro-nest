@@ -1,0 +1,27 @@
+{
+  "name": "micro-support",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "start:dev": "nest start --watch"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.2.1",
+    "@nestjs/core": "^9.2.1",
+    "@nestjs/microservices": "^9.2.1",
+    "rxjs": "^7.5.7",
+    "typescript": "^4.9.3",
+    "tsconfig": "*",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.1.5"
+  }
+}
